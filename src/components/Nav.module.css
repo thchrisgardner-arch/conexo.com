@@ -1,0 +1,199 @@
+.nav {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 800;
+  padding: 1rem var(--gutter);
+  pointer-events: none;
+  transition: padding var(--transition);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding: 0.5rem 0.5rem 0.5rem 0.25rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  pointer-events: auto;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition),
+    padding var(--transition),
+    max-width var(--dur-slow) var(--ease-out),
+    backdrop-filter var(--transition);
+}
+
+.scrolled {
+  padding-top: 0.75rem;
+}
+.scrolled .bar {
+  max-width: 980px;
+  padding-left: 1.1rem;
+  background: rgb(17 17 17 / 0.82);
+  border-color: var(--paper-15);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.brand {
+  color: var(--paper);
+  margin-right: auto;
+}
+
+.links {
+  display: flex;
+  gap: 1.75rem;
+}
+
+/* Texto que rueda al hover */
+.link {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  height: 1.3em;
+  font-size: 0.92rem;
+  font-weight: 550;
+  line-height: 1.3;
+  color: var(--paper);
+}
+.link span {
+  display: block;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.link span:last-child {
+  color: var(--green);
+}
+.link:hover span,
+.link:focus-visible span {
+  transform: translateY(-100%);
+}
+
+.cta {
+  padding-block: 0.7rem;
+}
+
+.burger {
+  display: none;
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--green);
+}
+.burger span {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  height: 2px;
+  background: var(--black);
+  border-radius: 2px;
+  transition:
+    transform var(--dur-base) var(--ease-out),
+    top var(--dur-base) var(--ease-out);
+}
+.burger span:first-child {
+  top: 19px;
+}
+.burger span:last-child {
+  top: 27px;
+}
+.isOpen .burger span:first-child {
+  top: 23px;
+  transform: rotate(45deg);
+}
+.isOpen .burger span:last-child {
+  top: 23px;
+  transform: rotate(-45deg);
+}
+.isOpen .bar {
+  background: transparent;
+  border-color: transparent;
+  backdrop-filter: none;
+}
+.isOpen .brand {
+  color: var(--black);
+}
+
+/* ---------- Menú mobile (experiencia completa) ---------- */
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 790;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: calc(var(--nav-h) + 3rem) var(--gutter) 2rem;
+  background: var(--green);
+  color: var(--black);
+  visibility: hidden;
+  clip-path: circle(0% at 100% 0%);
+  overflow: hidden;
+}
+
+.menuNav {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.menuLink {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(2.5rem, 12vw, 5.5rem);
+  line-height: 0.92;
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+}
+.menuLink .mono {
+  margin-top: 0.6em;
+  font-size: 0.7rem;
+}
+
+.menuFoot {
+  display: grid;
+  gap: 0.35rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+.menuFoot .mono {
+  margin-top: 0.75rem;
+  opacity: 0.6;
+}
+
+.menuNodes {
+  position: absolute;
+  right: -30px;
+  bottom: 18%;
+  width: 46vw;
+  max-width: 260px;
+  opacity: 0.9;
+  pointer-events: none;
+}
+.menuNodes path {
+  fill: none;
+  stroke: var(--black);
+  stroke-width: 1.5;
+}
+
+@media (max-width: 1023px) {
+  .links,
+  .cta {
+    display: none;
+  }
+  .burger {
+    display: block;
+  }
+  .scrolled .bar {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .menu {
+    display: none;
+  }
+}

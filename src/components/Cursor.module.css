@@ -1,0 +1,75 @@
+.dot,
+.ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 950;
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+  border-radius: 50%;
+  translate: -50% -50%;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  background: var(--green);
+  mix-blend-mode: difference;
+  transition: scale var(--dur-fast) var(--ease-out);
+}
+.dot[data-state="view"],
+.dot[data-state="drag"],
+.dot[data-state="link"] {
+  scale: 0;
+}
+
+.ring {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgb(183 255 60 / 0.7);
+  mix-blend-mode: difference;
+  transition:
+    width var(--dur-base) var(--ease-out),
+    height var(--dur-base) var(--ease-out),
+    background-color var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out),
+    scale var(--dur-fast) var(--ease-out);
+}
+
+.ring[data-state="link"] {
+  width: 54px;
+  height: 54px;
+  background: var(--green);
+  border-color: transparent;
+}
+
+.ring[data-state="view"],
+.ring[data-state="drag"] {
+  width: 96px;
+  height: 96px;
+  background: var(--green);
+  border-color: transparent;
+  mix-blend-mode: normal;
+}
+
+.ring.pressed {
+  scale: 0.85;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+  color: var(--black);
+  opacity: 0;
+  transition: opacity var(--dur-fast);
+}
+.ring[data-state="view"] .label,
+.ring[data-state="drag"] .label {
+  opacity: 1;
+}

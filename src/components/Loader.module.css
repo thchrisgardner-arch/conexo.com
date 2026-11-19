@@ -1,0 +1,48 @@
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  display: grid;
+  place-items: center;
+  background: var(--black);
+  color: var(--paper);
+  clip-path: inset(0 0 0 0);
+}
+
+.stage {
+  display: grid;
+  justify-items: center;
+  gap: 1.25rem;
+}
+
+.mark {
+  width: 76px;
+  height: auto;
+  overflow: visible;
+}
+.mark path {
+  stroke: var(--paper);
+  stroke-width: 2;
+  stroke-dasharray: 1;
+}
+
+.word {
+  display: flex;
+  overflow: hidden;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 112%;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+}
+.word span {
+  display: block;
+}
+
+.count {
+  color: var(--paper-50);
+}
+.count span {
+  color: var(--green);
+}

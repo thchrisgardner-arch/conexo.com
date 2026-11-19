@@ -1,0 +1,169 @@
+.contact {
+  position: relative;
+  padding-block: var(--space-xl) var(--space-lg);
+  background: var(--black);
+  color: var(--paper);
+  overflow: hidden;
+}
+
+.eyebrow {
+  display: flex;
+  gap: 1rem;
+  color: var(--paper-50);
+}
+.eyebrow span {
+  color: var(--green);
+}
+
+.word {
+  display: grid;
+  margin-block: var(--space-lg);
+  font-size: clamp(4rem, 14vw, 16rem);
+  font-weight: 900;
+  font-stretch: 112%;
+  line-height: 0.82;
+  color: var(--paper);
+}
+.row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+.row:last-child {
+  justify-content: flex-end;
+}
+.row span {
+  display: inline-block;
+}
+.q {
+  color: var(--green);
+}
+.wire {
+  flex: 1;
+  height: 0.06em;
+  min-width: 0.5em;
+  margin-left: 0.15em;
+  background: var(--green);
+  border-radius: 99px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.lead {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--fs-h3);
+  line-height: 1.02;
+  letter-spacing: var(--tracking-snug);
+  margin-bottom: 1rem;
+}
+.sub {
+  max-width: 40ch;
+  color: var(--paper-70);
+  font-size: var(--fs-lead);
+  line-height: 1.35;
+}
+
+.channels {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: var(--space-md);
+}
+.channels li {
+  display: grid;
+  gap: 0.35rem;
+}
+.channels .mono {
+  color: var(--paper-50);
+}
+.channels a {
+  justify-self: start;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.5rem, 3.2vw, 3rem);
+  letter-spacing: var(--tracking-snug);
+  line-height: 1.1;
+  background-size: 0% 3px;
+  transition:
+    background-size var(--dur-base) var(--ease-out),
+    color var(--dur-base);
+}
+.channels a:hover,
+.channels a:focus-visible {
+  color: var(--green);
+  background-size: 100% 3px;
+}
+
+/* ---------- Botón magnético ---------- */
+.magnetZone {
+  display: grid;
+  place-items: center;
+  padding: 3rem;
+}
+.magnet {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: clamp(180px, 20vw, 280px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--green);
+  color: var(--black);
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(1.25rem, 1.8vw, 1.7rem);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  transition: background-color var(--dur-base);
+}
+.magnet::before {
+  content: "";
+  position: absolute;
+  inset: -14px;
+  border-radius: 50%;
+  border: 1.5px dashed var(--green);
+  animation: spin 14s linear infinite;
+}
+.magnet span {
+  display: grid;
+  justify-items: center;
+  gap: 0.2rem;
+}
+.magnet i {
+  font-style: normal;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.magnet:hover {
+  background: var(--paper);
+}
+.magnet:hover i {
+  transform: translateX(0.6em);
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 1023px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .magnetZone {
+    justify-items: start;
+    padding: 1rem 0 0 14px;
+  }
+}
+
+@media (max-width: 767px) {
+  .word {
+    font-size: clamp(2.4rem, 11vw, 6rem);
+    font-stretch: 100%;
+  }
+}

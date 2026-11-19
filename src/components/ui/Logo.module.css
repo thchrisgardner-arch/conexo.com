@@ -1,0 +1,26 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.mark {
+  width: 1.5rem;
+  height: auto;
+  overflow: visible;
+  transition: rotate var(--dur-slow) var(--ease-spring);
+}
+
+.logo:hover .mark {
+  rotate: 120deg;
+}
+
+.word {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 115%;
+  font-size: 1.2rem;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  line-height: 1;
+}

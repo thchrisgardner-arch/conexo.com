@@ -1,0 +1,50 @@
+.band {
+  position: relative;
+  z-index: 3;
+  overflow: hidden;
+  margin-block: -2.2rem;
+  padding-block: 1.1rem;
+  background: var(--green);
+  color: var(--black);
+  rotate: -2deg;
+  width: 104%;
+  margin-left: -2%;
+}
+
+.track {
+  display: flex;
+  width: max-content;
+}
+
+.track li {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  padding-right: 1.6rem;
+  font-family: var(--font-display);
+  font-weight: 850;
+  font-stretch: 110%;
+  font-size: clamp(1.4rem, 2.6vw, 2.6rem);
+  letter-spacing: var(--tracking-snug);
+  text-transform: uppercase;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.track svg {
+  width: 0.8em;
+  flex: none;
+  fill: currentColor;
+  overflow: visible;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    flex-wrap: wrap;
+    width: auto;
+    padding-inline: var(--gutter);
+  }
+  .track li[aria-hidden="true"] {
+    display: none;
+  }
+}
