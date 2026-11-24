@@ -5,12 +5,15 @@ import { MQ } from "@/lib/gsap";
 
 type Node = { x: number; y: number; vx: number; vy: number; r: number; c: string | null };
 
-const ACCENTS = ["#b7ff3c", "#5b5bff", "#ff6b9d", "#ffd84d"];
+// Verde Lima, Celeste y Baby Blue (Brand Book pág. 13–14)
+const ACCENTS = ["#c8f502", "#0446f2", "#82ccf9"];
 
 /**
  * Red de nodos en canvas 2D: se conectan por proximidad y el cursor
  * actúa como un nodo más que atrae suavemente a los cercanos.
- * Se pausa fuera de viewport / pestaña oculta. Estática con reduced motion.
+ * Se pausa fuera de viewport / pestaña oculta. Con reduced motion los nodos no se
+ * desplazan solos, pero las líneas siguen respondiendo al cursor (Windows con
+ * "Efectos de animación" apagado reporta reduced motion y antes no veía el efecto).
  */
 export default function NodeField({ className }: { className?: string }) {
   const ref = useRef<HTMLCanvasElement>(null);
@@ -33,8 +36,8 @@ export default function NodeField({ className }: { className?: string }) {
       w = rect.width;
       h = rect.height;
       dpr = Math.min(window.devicePixelRatio || 1, 2);
-      canvas.width = w * dpr;
-      canvas.height = h * dpr;
+      canvas.width = Math.round(w * dpr);
+      canvas.height = Math.round(h * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       const mobile = w < 768;
       const count = Math.min(mobile ? 26 : 64, Math.round((w * h) / (mobile ? 16000 : 21000)));
@@ -91,7 +94,7 @@ export default function NodeField({ className }: { className?: string }) {
           const dy = a.y - b.y;
           const d = Math.hypot(dx, dy);
           if (d < linkDist) {
-            ctx.strokeStyle = `rgba(247,245,239,${(1 - d / linkDist) * 0.16})`;
+            ctx.strokeStyle = `rgba(245,249,244,${(1 - d / linkDist) * 0.16})`;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
@@ -101,7 +104,7 @@ export default function NodeField({ className }: { className?: string }) {
         if (mouse.active) {
           const d = Math.hypot(a.x - mouse.x, a.y - mouse.y);
           if (d < linkDist * 1.4) {
-            ctx.strokeStyle = `rgba(183,255,60,${(1 - d / (linkDist * 1.4)) * 0.7})`;
+            ctx.strokeStyle = `rgba(200,245,2,${(1 - d / (linkDist * 1.4)) * 0.7})`;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(mouse.x, mouse.y);
@@ -112,7 +115,7 @@ export default function NodeField({ className }: { className?: string }) {
 
       // nodos
       for (const n of nodes) {
-        ctx.fillStyle = n.c ?? "rgba(247,245,239,0.55)";
+        ctx.fillStyle = n.c ?? "rgba(245,249,244,0.55)";
         if (n.c && n.r > 2) {
           ctx.fillRect(n.x - 3.5, n.y - 3.5, 7, 7);
         } else {
@@ -146,15 +149,32 @@ export default function NodeField({ className }: { className?: string }) {
     const onVis = () => (document.hidden ? stop() : start());
     document.addEventListener("visibilitychange", onVis);
 
-    const onMove = (e: PointerEvent) => {
+    // Sin animación continua (reduced motion), redibujar sólo cuando el cursor se mueve
+    let pending = 0;
+    const redrawOnInput = () => {
+      if (running || pending) return;
+      pending = requestAnimationFrame(() => {
+        pending = 0;
+        draw();
+      });
+    };
+
+    // pointermove + mousemove: algunos navegadores/equipos en Windows (pen/touch híbridos,
+    // Firefox con ciertos drivers) no entregan pointermove de forma consistente.
+    const onMove = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect();
       mouse.x = e.clientX - rect.left;
       mouse.y = e.clientY - rect.top;
-      mouse.active = mouse.y > 0 && mouse.y < rect.height;
+      mouse.active = mouse.y > 0 && mouse.y < rect.height && mouse.x > 0 && mouse.x < rect.width;
+      redrawOnInput();
     };
-    const onLeave = () => (mouse.active = false);
+    const onLeave = () => {
+      mouse.active = false;
+      redrawOnInput();
+    };
     window.addEventListener("pointermove", onMove, { passive: true });
-    document.documentElement.addEventListener("pointerleave", onLeave);
+    window.addEventListener("mousemove", onMove, { passive: true });
+    document.documentElement.addEventListener("mouseleave", onLeave);
 
     let rt = 0;
     const onResize = () => {
@@ -170,8 +190,10 @@ export default function NodeField({ className }: { className?: string }) {
       stop();
       io.disconnect();
       document.removeEventListener("visibilitychange", onVis);
+      cancelAnimationFrame(pending);
       window.removeEventListener("pointermove", onMove);
-      document.documentElement.removeEventListener("pointerleave", onLeave);
+      window.removeEventListener("mousemove", onMove);
+      document.documentElement.removeEventListener("mouseleave", onLeave);
       window.removeEventListener("resize", onResize);
     };
   }, []);

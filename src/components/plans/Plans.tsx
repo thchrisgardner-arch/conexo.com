@@ -35,7 +35,7 @@ export default function Plans() {
 
   // Inclinación y "nodo" que sigue al cursor dentro de la tarjeta
   const onMove = (e: React.PointerEvent<HTMLElement>) => {
-    if (e.pointerType !== "mouse" || window.matchMedia(MQ.reduce).matches) return;
+    if (e.pointerType === "touch" || window.matchMedia(MQ.reduce).matches) return;
     const el = e.currentTarget;
     const r = el.getBoundingClientRect();
     const x = (e.clientX - r.left) / r.width;

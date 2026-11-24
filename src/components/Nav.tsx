@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 import { nav, site } from "@/content/conexo";
-import Logo from "./ui/Logo";
+import Logo, { Isotipo } from "./ui/Logo";
 import Button from "./ui/Button";
 import s from "./Nav.module.css";
 
@@ -62,7 +62,8 @@ export default function Nav() {
       <header className={`${s.nav} ${scrolled ? s.scrolled : ""} ${open ? s.isOpen : ""}`}>
         <div className={s.bar}>
           <a href="#top" className={s.brand} aria-label="Conexo, ir al inicio">
-            <Logo />
+            {/* Versión de color según el fondo: verde sobre oscuro, oscura sobre el menú verde lima */}
+            <Logo tone={open ? "oscuro" : "verde"} width={84} />
           </a>
 
           <nav aria-label="Principal" className={s.links}>
@@ -115,14 +116,8 @@ export default function Nav() {
         <div className={s.menuFoot} data-menu-foot>
           <a href={`mailto:${site.email}`}>{site.email}</a>
           <a href={site.phoneHref}>{site.phone}</a>
-          <p className="mono">{site.tagline}</p>
         </div>
-        <svg className={s.menuNodes} viewBox="0 0 200 200" aria-hidden="true">
-          <path d="M40 40 L160 70 L110 170 Z" />
-          <circle cx="40" cy="40" r="7" fill="var(--blue)" />
-          <circle cx="160" cy="70" r="7" fill="var(--black)" />
-          <circle cx="110" cy="170" r="7" fill="var(--yellow)" />
-        </svg>
+        <Isotipo tone="oscuro" width={220} className={s.menuNodes} />
       </div>
     </>
   );

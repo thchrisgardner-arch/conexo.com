@@ -19,8 +19,7 @@
 
 .statement {
   font-size: var(--fs-h2);
-  font-weight: 900;
-  font-stretch: 105%;
+  font-weight: 700;
 }
 .statement em {
   font-style: normal;
@@ -81,6 +80,7 @@
 }
 .eqItem:hover {
   background: var(--c);
+  color: var(--cfg);
   transform: translateY(-4px) rotate(-2deg);
 }
 .eqNode {
@@ -104,8 +104,7 @@
   background: var(--ink);
   color: var(--green);
   font-family: var(--font-display);
-  font-weight: 900;
-  font-stretch: 112%;
+  font-weight: 700;
   font-size: clamp(1rem, 1.4vw, 1.25rem);
   text-transform: uppercase;
 }
@@ -115,13 +114,15 @@
   gap: 1.25rem;
 }
 .lead {
+  font-family: var(--font-display); /* subtítulo: Quicksand medium */
+  font-weight: var(--fw-subtitle);
   font-size: clamp(1.35rem, 2.1vw, 2rem);
   line-height: 1.2;
   font-weight: 500;
   letter-spacing: -0.02em;
 }
 .lead strong {
-  font-weight: 800;
+  font-weight: 700;
   background: linear-gradient(var(--green), var(--green)) 0 88% / 100% 0.35em no-repeat;
 }
 .sub {

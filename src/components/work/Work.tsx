@@ -6,7 +6,8 @@ import { projects, site, TOTAL_PROJECTS, WORK_IMAGE_BASE } from "@/content/conex
 import Button from "../ui/Button";
 import s from "./Work.module.css";
 
-const ACCENTS = ["var(--pink)", "var(--blue)", "var(--green)", "var(--yellow)"];
+// Sólo tonos de marca con texto negro legible encima (el celeste no da contraste con negro)
+const ACCENTS = ["var(--green)", "var(--babyblue)"];
 
 export default function Work() {
   const root = useRef<HTMLElement>(null);

@@ -2,28 +2,41 @@
    CONEXO — Design tokens
    ========================================================================== */
 :root {
-  /* Color */
-  --black: #111111;
-  --white: #f7f5ef;
-  --green: #b7ff3c;
-  --blue: #5b5bff;
-  --pink: #ff6b9d;
-  --yellow: #ffd84d;
+  /* Color — Brand Book Conexo, págs. 13 y 14 (valores exactos) */
+  --verde-lima: #c8f502;
+  --negro-oceano: #070b0e;
+  --blanco: #f5f9f4;
+  --celeste: #0446f2;
+  --baby-blue: #82ccf9;
+  /* Degradados oficiales (stops tomados del PDF del manual) */
+  --grad-iconico: linear-gradient(90deg, #c8f502 0%, #1d1d1b 100%);
+  --grad-versatil: linear-gradient(90deg, #ffffff 0%, #1d1d1b 100%);
+
+  /* Alias de uso en componentes */
+  --black: var(--negro-oceano);
+  --white: var(--blanco);
+  --green: var(--verde-lima);
+  --blue: var(--celeste);
+  --babyblue: var(--baby-blue);
 
   --ink: var(--black);
   --paper: var(--white);
-  --ink-70: rgb(17 17 17 / 0.7);
-  --ink-50: rgb(17 17 17 / 0.5);
-  --ink-15: rgb(17 17 17 / 0.15);
-  --paper-70: rgb(247 245 239 / 0.7);
-  --paper-50: rgb(247 245 239 / 0.52);
-  --paper-15: rgb(247 245 239 / 0.14);
-  --paper-8: rgb(247 245 239 / 0.08);
+  --ink-70: rgb(7 11 14 / 0.7);
+  --ink-50: rgb(7 11 14 / 0.55);
+  --ink-15: rgb(7 11 14 / 0.15);
+  --paper-70: rgb(245 249 244 / 0.7);
+  --paper-50: rgb(245 249 244 / 0.55);
+  --paper-15: rgb(245 249 244 / 0.14);
+  --paper-8: rgb(245 249 244 / 0.08);
 
-  /* Typography */
-  --font-display: var(--font-archivo), "Arial Black", system-ui, sans-serif;
-  --font-body: var(--font-archivo), system-ui, sans-serif;
-  --font-mono: var(--font-jetbrains), ui-monospace, "SFMono-Regular", monospace;
+  /* Typography — Brand Book págs. 10–12: Quicksand principal, Inter secundaria */
+  --font-display: var(--font-quicksand), system-ui, sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-inter), system-ui, sans-serif; /* etiquetas: Inter en mayúsculas */
+  --fw-title: 700; /* H1/H2: bold */
+  --fw-subtitle: 500; /* subtítulos: medium */
+  --fw-button: 700; /* botones: bold */
+  --fw-body: 400; /* cuerpos: regular */
 
   --fs-mega: clamp(4.25rem, 15vw, 17rem);
   --fs-h1: clamp(3.4rem, 9vw, 10rem);
@@ -34,12 +47,12 @@
   --fs-small: 0.875rem;
   --fs-mono: 0.75rem;
 
-  --lh-tight: 0.86;
+  --lh-tight: 0.9;
   --lh-snug: 1.05;
-  --lh-body: 1.5;
-  --tracking-tight: -0.045em;
-  --tracking-snug: -0.02em;
-  --tracking-mono: 0.08em;
+  --lh-body: 1.55;
+  --tracking-tight: -0.03em;
+  --tracking-snug: -0.015em;
+  --tracking-mono: 0.12em;
 
   /* Spacing */
   --space-2xs: 0.25rem;
@@ -99,6 +112,7 @@ body {
   color: var(--paper);
   font-family: var(--font-body);
   font-size: var(--fs-body);
+  font-weight: var(--fw-body);
   line-height: var(--lh-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -162,7 +176,7 @@ html.has-cursor button {
 .mono {
   font-family: var(--font-mono);
   font-size: var(--fs-mono);
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: var(--tracking-mono);
   text-transform: uppercase;
   line-height: 1.4;
@@ -170,7 +184,7 @@ html.has-cursor button {
 
 .display {
   font-family: var(--font-display);
-  font-weight: 850;
+  font-weight: var(--fw-title);
   line-height: var(--lh-tight);
   letter-spacing: var(--tracking-tight);
   text-transform: uppercase;

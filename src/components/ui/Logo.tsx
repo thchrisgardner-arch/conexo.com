@@ -1,22 +1,86 @@
+/* eslint-disable @next/next/no-img-element -- exportación estática: los logos son archivos oficiales ya optimizados */
 import s from "./Logo.module.css";
 
-/** Isotipo: los tres pilares conectados (web · automatización · soporte). */
-export function Mark({ className = "" }: { className?: string }) {
+/**
+ * Piezas oficiales del Brand Book (archivos en /public/brand, recortados de los PNG originales).
+ * No deformar, no rotar ni recolorear con CSS: elegir la versión de color que corresponde al fondo.
+ */
+type Tone = "verde" | "oscuro" | "blanco";
+
+const RATIO = {
+  logotipo: 314 / 480, // "con" sobre "exo" (pág. 8)
+  lockup: 927 / 1200, // logotipo + tagline "ALIADO INTEGRAL DIGITAL" (pág. 9)
+  isotipo: 395 / 600, // tres circunferencias unidas (pág. 7)
+};
+
+/** Logotipo en dos líneas. `width` en px de pantalla; la altura sale de la proporción oficial. */
+export default function Logo({
+  tone = "verde",
+  width = 92,
+  className = "",
+}: {
+  tone?: Tone;
+  width?: number;
+  className?: string;
+}) {
   return (
-    <svg className={`${s.mark} ${className}`} viewBox="0 0 24 22" aria-hidden="true">
-      <path d="M12 3 L21 18.5 L3 18.5 Z" fill="none" stroke="currentColor" strokeWidth="1.6" />
-      <circle cx="12" cy="3" r="3" fill="var(--blue)" />
-      <circle cx="21" cy="18.5" r="3" fill="var(--green)" />
-      <circle cx="3" cy="18.5" r="3" fill="var(--yellow)" />
-    </svg>
+    <img
+      src={`/brand/logotipo-${tone}.webp`}
+      alt="Conexo"
+      width={width}
+      height={Math.round(width * RATIO.logotipo)}
+      className={`${s.img} ${className}`}
+      decoding="async"
+    />
   );
 }
 
-export default function Logo({ className = "" }: { className?: string }) {
+/** Logotipo + tagline, tal como lo muestra la pág. 9. */
+export function LogoLockup({
+  tone = "verde",
+  width = 220,
+  className = "",
+  loading = "lazy",
+}: {
+  tone?: Tone;
+  width?: number;
+  className?: string;
+  loading?: "lazy" | "eager";
+}) {
   return (
-    <span className={`${s.logo} ${className}`}>
-      <Mark />
-      <span className={s.word}>Conexo</span>
-    </span>
+    <img
+      src={`/brand/logotipo-tagline-${tone}.webp`}
+      alt="Conexo, aliado integral digital"
+      width={width}
+      height={Math.round(width * RATIO.lockup)}
+      className={`${s.img} ${className}`}
+      loading={loading}
+      decoding="async"
+    />
+  );
+}
+
+/** Isotipo oficial. Decorativo por defecto (alt vacío). */
+export function Isotipo({
+  tone = "verde",
+  width = 48,
+  className = "",
+  alt = "",
+}: {
+  tone?: Tone;
+  width?: number;
+  className?: string;
+  alt?: string;
+}) {
+  return (
+    <img
+      src={`/brand/isotipo-${tone}.webp`}
+      alt={alt}
+      aria-hidden={alt ? undefined : true}
+      width={width}
+      height={Math.round(width * RATIO.isotipo)}
+      className={`${s.img} ${className}`}
+      decoding="async"
+    />
   );
 }

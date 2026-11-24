@@ -3,8 +3,16 @@
   padding-top: var(--space-lg);
   background: var(--black);
   color: var(--paper);
-  border-top: 1px solid var(--paper-15);
   overflow: hidden;
+}
+/* Línea superior con el degradado Versátil (Brand Book pág. 14) */
+.footer::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  background: var(--grad-versatil);
+  opacity: 0.6;
 }
 
 .grid {
@@ -18,21 +26,20 @@
   display: grid;
   gap: 0.75rem;
 }
-.brand p {
-  color: var(--paper-50);
-}
 
 .links {
   display: grid;
   gap: 0.4rem;
-  font-weight: 550;
+  font-family: var(--font-display);
+  font-weight: 600;
 }
 
 .contact {
   display: grid;
   gap: 0.4rem;
   font-style: normal;
-  font-weight: 550;
+  font-family: var(--font-display);
+  font-weight: 600;
   justify-items: start;
 }
 
@@ -46,23 +53,7 @@
 
 .base {
   margin-top: var(--space-lg);
-}
-.giant {
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-stretch: 125%;
-  font-size: clamp(4rem, 21.5vw, 24rem);
-  line-height: 0.72;
-  letter-spacing: -0.06em;
-  text-transform: uppercase;
-  color: transparent;
-  -webkit-text-stroke: 1.5px var(--paper-15);
-  transition: -webkit-text-stroke-color var(--dur-slow);
-  margin-left: -0.04em;
-  user-select: none;
-}
-.footer:hover .giant {
-  -webkit-text-stroke-color: var(--green);
+  border-top: 1px solid var(--paper-15);
 }
 
 .legal {

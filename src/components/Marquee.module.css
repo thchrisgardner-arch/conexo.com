@@ -22,8 +22,7 @@
   gap: 1.6rem;
   padding-right: 1.6rem;
   font-family: var(--font-display);
-  font-weight: 850;
-  font-stretch: 110%;
+  font-weight: 700;
   font-size: clamp(1.4rem, 2.6vw, 2.6rem);
   letter-spacing: var(--tracking-snug);
   text-transform: uppercase;
@@ -31,11 +30,9 @@
   white-space: nowrap;
 }
 
-.track svg {
-  width: 0.8em;
+.track .iso {
   flex: none;
-  fill: currentColor;
-  overflow: visible;
+  width: 1.35em;
 }
 
 @media (prefers-reduced-motion: reduce) {

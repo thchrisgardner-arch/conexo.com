@@ -15,7 +15,8 @@ export const MQ = {
   desktop: "(min-width: 1024px)",
   motion: "(prefers-reduced-motion: no-preference)",
   reduce: "(prefers-reduced-motion: reduce)",
-  fine: "(hover: hover) and (pointer: fine)",
+  // any-*: portátiles Windows con pantalla táctil reportan pointer: coarse aunque tengan mouse
+  fine: "(any-hover: hover) and (any-pointer: fine)",
 };
 
 export const EASE = {

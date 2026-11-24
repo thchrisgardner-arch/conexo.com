@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { gsap, ScrollTrigger, useGSAP, MQ } from "@/lib/gsap";
 import { marquee } from "@/content/conexo";
+import { Isotipo } from "./ui/Logo";
 import s from "./Marquee.module.css";
 
 /** Cinta de servicios: avanza sola y acelera / cambia de sentido con el scroll. */
@@ -40,12 +41,7 @@ export default function Marquee() {
         {items.map((item, i) => (
           <li key={i} aria-hidden={i >= marquee.length}>
             <span>{item}</span>
-            <svg viewBox="0 0 24 22" aria-hidden="true">
-              <path d="M12 3 L21 18.5 L3 18.5 Z" fill="none" stroke="currentColor" strokeWidth="2" />
-              <circle cx="12" cy="3" r="3" />
-              <circle cx="21" cy="18.5" r="3" />
-              <circle cx="3" cy="18.5" r="3" />
-            </svg>
+            <Isotipo tone="oscuro" width={52} className={s.iso} />
           </li>
         ))}
       </ul>

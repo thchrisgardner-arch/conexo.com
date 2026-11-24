@@ -32,7 +32,8 @@ export const stats = [
   { value: "100%", label: "integrado: web + automatización + soporte" },
 ];
 
-export type Accent = "green" | "blue" | "pink" | "yellow";
+// Colores de marca (Brand Book págs. 13–14): Verde Lima, Celeste y Baby Blue
+export type Accent = "green" | "blue" | "babyblue";
 
 export type Service = {
   id: string;
@@ -57,7 +58,7 @@ export const services: Service[] = [
     title: "E-commerce",
     description: "Vende online con una tienda lista para escalar.",
     tags: ["Pasarelas", "Catálogo", "Carrito", "Multi-moneda"],
-    accent: "pink",
+    accent: "babyblue",
     links: ["web", "auto", "hosting"],
   },
   {
@@ -73,7 +74,7 @@ export const services: Service[] = [
     title: "Aplicaciones móviles",
     description: "Tu negocio en el bolsillo de tus clientes.",
     tags: ["React Native", "iOS", "Android", "Push"],
-    accent: "yellow",
+    accent: "blue",
     links: ["auto", "paneles"],
   },
   {
@@ -81,7 +82,7 @@ export const services: Service[] = [
     title: "Paneles administrativos",
     description: "Control total de tu operación en una sola pantalla.",
     tags: ["Dashboards", "CRM", "Sistemas internos", "Reportería"],
-    accent: "blue",
+    accent: "babyblue",
     links: ["auto", "apps", "hosting"],
   },
   {
@@ -114,7 +115,7 @@ export const pillars = [
     title: ["Configuración", "y soporte"],
     description: "Infraestructura, mantenimiento y acompañamiento real, siempre.",
     keywords: ["Infraestructura", "Monitoreo", "Backups", "24/7"],
-    accent: "yellow" as Accent,
+    accent: "babyblue" as Accent,
   },
 ];
 

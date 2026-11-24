@@ -25,13 +25,14 @@
 }
 .title {
   font-size: var(--fs-h2);
-  font-weight: 900;
-  font-stretch: 108%;
+  font-weight: 700;
 }
 .title > span:last-child {
   padding-left: 1em;
 }
 .note {
+  font-family: var(--font-display); /* subtítulo: Quicksand medium */
+  font-weight: var(--fw-subtitle);
   color: var(--ink-70);
   font-size: 1.05rem;
 }
@@ -104,8 +105,7 @@
 
 .name {
   font-family: var(--font-display);
-  font-weight: 900;
-  font-stretch: 112%;
+  font-weight: 700;
   font-size: clamp(2rem, 10cqi, 4rem);
   line-height: 0.9;
   letter-spacing: var(--tracking-tight);
@@ -166,7 +166,7 @@
 }
 .customText {
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 700;
   font-size: clamp(1.2rem, 2vw, 1.9rem);
   letter-spacing: var(--tracking-snug);
 }

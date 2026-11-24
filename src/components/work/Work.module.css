@@ -24,8 +24,7 @@
 }
 .title {
   font-size: var(--fs-h2);
-  font-weight: 900;
-  font-stretch: 108%;
+  font-weight: 700;
 }
 .title > span:nth-child(2) {
   padding-left: 1.2em;
@@ -38,15 +37,14 @@
 }
 .count strong {
   font-family: var(--font-display);
-  font-weight: 900;
-  font-stretch: 115%;
+  font-weight: 700;
   font-size: clamp(5rem, 11vw, 11rem);
   line-height: 0.8;
   letter-spacing: -0.06em;
   font-variant-numeric: tabular-nums;
 }
 .count strong span {
-  background: linear-gradient(var(--pink), var(--pink)) 0 85% / 100% 0.22em no-repeat;
+  background: linear-gradient(var(--green), var(--green)) 0 85% / 100% 0.22em no-repeat;
 }
 .count .mono {
   margin-top: 0.75rem;
@@ -94,15 +92,14 @@
 .name {
   grid-area: name;
   font-family: var(--font-display);
-  font-weight: 900;
-  font-stretch: 105%;
+  font-weight: 700;
   font-size: clamp(2.2rem, 4.6vw, 5.5rem);
   line-height: 0.9;
   letter-spacing: var(--tracking-tight);
   text-transform: uppercase;
   transition:
     transform var(--dur-slow) var(--ease-out),
-    font-stretch var(--dur-slow) var(--ease-out);
+    letter-spacing var(--dur-slow) var(--ease-out);
 }
 .category {
   grid-area: category;
@@ -149,14 +146,14 @@
 
 /* Hover / foco */
 .hovering .row:not(.active) .link {
-  color: rgb(17 17 17 / 0.35);
+  color: rgb(7 11 14 / 0.35);
 }
 .active .link::before {
   transform: scaleY(1);
 }
 .active .name {
   transform: translateX(1.25rem);
-  font-stretch: 120%;
+  letter-spacing: 0.005em;
 }
 .active .arrow {
   background: var(--ink);
@@ -175,6 +172,8 @@
   margin-top: var(--space-lg);
 }
 .footText {
+  font-family: var(--font-display); /* subtítulo: Quicksand medium */
+  font-weight: var(--fw-subtitle);
   font-size: var(--fs-lead);
   font-weight: 500;
   color: var(--ink-70);

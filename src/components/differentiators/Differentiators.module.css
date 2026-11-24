@@ -50,19 +50,19 @@
   --cvis: var(--blue);
 }
 .ink {
-  --cbg: #161616;
+  --cbg: var(--black);
   --cfg: var(--paper);
   --cvis: var(--green);
 }
-.pink {
-  --cbg: var(--pink);
+.babyblue {
+  --cbg: var(--babyblue);
   --cfg: var(--ink);
   --cvis: var(--ink);
 }
 .blue {
   --cbg: var(--blue);
   --cfg: var(--paper);
-  --cvis: var(--yellow);
+  --cvis: var(--green);
 }
 
 .top {
@@ -74,8 +74,7 @@
 .title {
   margin-block: auto;
   font-size: clamp(3.2rem, 10.5vw, 12rem);
-  font-weight: 900;
-  font-stretch: 112%;
+  font-weight: 700;
 }
 .title > span:last-child {
   padding-left: 0.9em;
@@ -88,6 +87,8 @@
   gap: 2rem;
 }
 .desc {
+  font-family: var(--font-display); /* subtítulo: Quicksand medium */
+  font-weight: var(--fw-subtitle);
   max-width: 32ch;
   font-size: var(--fs-lead);
   font-weight: 500;
@@ -146,7 +147,6 @@
 @media (max-width: 767px) {
   .title {
     font-size: clamp(2.6rem, 13vw, 4.5rem);
-    font-stretch: 100%;
   }
   .title > span:last-child {
     padding-left: 0;

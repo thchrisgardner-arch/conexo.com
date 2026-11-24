@@ -79,16 +79,14 @@ export default function Hero() {
       <div className={s.shapes} aria-hidden="true">
         <span data-shape data-depth="1.4" className={`${s.shape} ${s.pill}`} />
         <span data-shape data-depth="-0.8" className={`${s.shape} ${s.square}`} />
-        <span data-shape data-depth="1" className={`${s.shape} ${s.circle}`} />
-        <span data-shape data-depth="-1.3" className={`${s.shape} ${s.plus}`} />
+        <span data-shape data-depth="1" className={`${s.shape} ${s.ring}`} />
       </div>
 
       <div className={`container ${s.inner}`} data-inner>
         <div className={s.top} data-fade>
           <p className="mono">
-            <span className={s.live} aria-hidden="true" /> {site.tagline}
+            <span className={s.live} aria-hidden="true" /> Desarrollo web · Automatización · Soporte
           </p>
-          <p className="mono">Web · Automatización · Soporte</p>
         </div>
 
         <h1 id="hero-title" className={`display ${s.title}`}>

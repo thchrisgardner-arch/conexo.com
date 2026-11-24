@@ -17,17 +17,19 @@ export default function Cursor() {
   const label = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    const mql = window.matchMedia(MQ.fine);
-    const reduce = window.matchMedia(MQ.reduce);
-    if (!mql.matches || reduce.matches) return;
+    // Activo con cualquier puntero fino. Con reduced motion se mantiene (sigue al usuario,
+    // no es animación autónoma) pero sin inercia.
+    if (!window.matchMedia(MQ.fine).matches) return;
+    const reduce = window.matchMedia(MQ.reduce).matches;
 
     const html = document.documentElement;
     html.classList.add("has-cursor");
 
-    const dx = gsap.quickTo(dot.current, "x", { duration: 0.12, ease: "power3" });
-    const dy = gsap.quickTo(dot.current, "y", { duration: 0.12, ease: "power3" });
-    const rx = gsap.quickTo(ring.current, "x", { duration: 0.45, ease: "power3" });
-    const ry = gsap.quickTo(ring.current, "y", { duration: 0.45, ease: "power3" });
+    const lag = (d: number) => ({ duration: reduce ? 0.01 : d, ease: "power3" });
+    const dx = gsap.quickTo(dot.current, "x", lag(0.12));
+    const dy = gsap.quickTo(dot.current, "y", lag(0.12));
+    const rx = gsap.quickTo(ring.current, "x", lag(0.45));
+    const ry = gsap.quickTo(ring.current, "y", lag(0.45));
 
     let visible = false;
     let state: State = "default";
@@ -41,7 +43,7 @@ export default function Cursor() {
     };
 
     const onMove = (e: PointerEvent) => {
-      if (e.pointerType !== "mouse") return;
+      if (e.pointerType === "touch") return; // mouse, pen y touchpad (algunos drivers de Windows reportan "pen")
       if (!visible) {
         visible = true;
         gsap.set([dot.current, ring.current], { x: e.clientX, y: e.clientY });

@@ -5,7 +5,7 @@ import { gsap, SplitText, useGSAP, MQ } from "@/lib/gsap";
 import { differentiators, manifesto } from "@/content/conexo";
 import s from "./Differentiators.module.css";
 
-const THEMES = ["paper", "ink", "pink", "blue"] as const;
+const THEMES = ["paper", "ink", "babyblue", "blue"] as const;
 
 /** Visual abstracto de cada diferencial. */
 function Visual({ i }: { i: number }) {

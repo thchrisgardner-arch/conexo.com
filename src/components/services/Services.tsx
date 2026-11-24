@@ -159,7 +159,11 @@ export default function Services() {
                 tabIndex={0}
                 aria-labelledby={`sv-${sv.id}`}
                 className={`${s.module} ${on ? s.on : ""} ${isLinked(sv.id) ? s.linked : ""}`}
-                style={{ ["--accent" as string]: `var(--${sv.accent})` }}
+                style={{
+                  ["--accent" as string]: `var(--${sv.accent})`,
+                  // Celeste necesita texto claro; Verde Lima y Baby Blue, texto negro océano
+                  ["--accent-fg" as string]: sv.accent === "blue" ? "var(--paper)" : "var(--black)",
+                }}
                 onMouseEnter={() => setActive(sv.id)}
                 onFocus={() => setActive(sv.id)}
                 onBlur={() => setActive(null)}

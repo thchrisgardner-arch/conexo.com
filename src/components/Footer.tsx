@@ -1,5 +1,5 @@
 import { nav, site } from "@/content/conexo";
-import Logo from "./ui/Logo";
+import { LogoLockup } from "./ui/Logo";
 import s from "./Footer.module.css";
 
 export default function Footer() {
@@ -8,8 +8,8 @@ export default function Footer() {
     <footer className={s.footer}>
       <div className={`container ${s.grid}`}>
         <div className={s.brand}>
-          <Logo />
-          <p>{site.tagline}.</p>
+          {/* Logotipo + tagline oficial (Brand Book pág. 9) */}
+          <LogoLockup tone="verde" width={250} />
         </div>
 
         <nav aria-label="Pie de página">
@@ -39,9 +39,6 @@ export default function Footer() {
       </div>
 
       <div className={`container ${s.base}`}>
-        <p className={s.giant} aria-hidden="true">
-          Conexo
-        </p>
         <div className={s.legal}>
           <span className="mono">© {new Date().getFullYear()} Conexo</span>
           <span className="mono">Web · Automatización · Soporte</span>

@@ -42,15 +42,15 @@
   margin-right: 0.4rem;
   border-radius: 50%;
   background: var(--green);
-  box-shadow: 0 0 0 0 rgb(183 255 60 / 0.6);
+  box-shadow: 0 0 0 0 rgb(200 245 2 / 0.6);
   animation: live 2s infinite;
 }
 @keyframes live {
   70% {
-    box-shadow: 0 0 0 10px rgb(183 255 60 / 0);
+    box-shadow: 0 0 0 10px rgb(200 245 2 / 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgb(183 255 60 / 0);
+    box-shadow: 0 0 0 0 rgb(200 245 2 / 0);
   }
 }
 
@@ -60,8 +60,7 @@
   display: grid;
   margin-block: 2.5rem;
   font-size: var(--fs-h1);
-  font-weight: 900;
-  font-stretch: 108%;
+  font-weight: 700;
 }
 .l2 {
   padding-left: 1.6em;
@@ -99,6 +98,8 @@
 }
 
 .lead {
+  font-family: var(--font-display); /* subtítulo: Quicksand medium */
+  font-weight: var(--fw-subtitle);
   max-width: 30ch;
   font-size: var(--fs-lead);
   line-height: 1.35;
@@ -128,7 +129,7 @@
 }
 .stats strong {
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 700;
   font-size: clamp(1.5rem, 2.4vw, 2.25rem);
   letter-spacing: var(--tracking-snug);
   line-height: 1;
@@ -166,22 +167,14 @@
   background: var(--blue);
   rotate: 18deg;
 }
-.circle {
+/* circunferencia hueca en Baby Blue, eco de los nodos del isotipo */
+.ring {
   bottom: 30%;
   left: 7%;
-  width: clamp(22px, 2.4vw, 38px);
+  width: clamp(26px, 2.8vw, 44px);
   aspect-ratio: 1;
   border-radius: 50%;
-  background: var(--pink);
-}
-.plus {
-  top: 32%;
-  left: 46%;
-  width: clamp(26px, 2.6vw, 40px);
-  aspect-ratio: 1;
-  background:
-    linear-gradient(var(--yellow), var(--yellow)) center / 100% 30% no-repeat,
-    linear-gradient(var(--yellow), var(--yellow)) center / 30% 100% no-repeat;
+  border: clamp(5px, 0.55vw, 8px) solid var(--babyblue);
 }
 
 /* ---------- Tablet / Mobile ---------- */
@@ -194,19 +187,11 @@
     top: 16%;
     right: -4%;
   }
-  .plus {
-    top: 70%;
-    left: 80%;
-  }
 }
 
 @media (max-width: 767px) {
-  .top p:last-child {
-    display: none;
-  }
   .title {
     font-size: clamp(2.3rem, 10.6vw, 5rem);
-    font-stretch: 100%;
     margin-block: 2rem;
   }
   .l2,
@@ -236,7 +221,7 @@
     border-bottom: 1px solid var(--paper-15);
   }
   .square,
-  .circle {
+  .ring {
     display: none;
   }
 }

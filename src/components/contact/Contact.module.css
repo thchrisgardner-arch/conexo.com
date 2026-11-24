@@ -19,8 +19,7 @@
   display: grid;
   margin-block: var(--space-lg);
   font-size: clamp(4rem, 14vw, 16rem);
-  font-weight: 900;
-  font-stretch: 112%;
+  font-weight: 700;
   line-height: 0.82;
   color: var(--paper);
 }
@@ -57,13 +56,15 @@
 
 .lead {
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 700;
   font-size: var(--fs-h3);
   line-height: 1.02;
   letter-spacing: var(--tracking-snug);
   margin-bottom: 1rem;
 }
 .sub {
+  font-family: var(--font-display); /* subtítulo: Quicksand medium */
+  font-weight: var(--fw-subtitle);
   max-width: 40ch;
   color: var(--paper-70);
   font-size: var(--fs-lead);
@@ -85,7 +86,7 @@
 .channels a {
   justify-self: start;
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 700;
   font-size: clamp(1.5rem, 3.2vw, 3rem);
   letter-spacing: var(--tracking-snug);
   line-height: 1.1;
@@ -116,7 +117,7 @@
   background: var(--green);
   color: var(--black);
   font-family: var(--font-display);
-  font-weight: 900;
+  font-weight: 700;
   font-size: clamp(1.25rem, 1.8vw, 1.7rem);
   text-transform: uppercase;
   letter-spacing: -0.02em;
@@ -164,6 +165,5 @@
 @media (max-width: 767px) {
   .word {
     font-size: clamp(2.4rem, 11vw, 6rem);
-    font-stretch: 100%;
   }
 }

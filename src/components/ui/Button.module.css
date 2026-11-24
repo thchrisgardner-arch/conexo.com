@@ -1,8 +1,14 @@
 .btn {
+  /* Por defecto (verde lima): el hover se queda en la paleta de marca con el
+     degradado Icónico (Verde Lima → #1d1d1b), estirado para que el tramo visible
+     vaya de lima a oliva y el texto negro conserve contraste (≥ 4.5:1). */
   --bg: var(--green);
   --fg: var(--black);
-  --fill: var(--black);
-  --fill-fg: var(--green);
+  --fill: var(--grad-iconico);
+  --fill-size: 230% 100%;
+  --fill-fg: var(--black);
+  --arrow-bg-h: var(--black);
+  --arrow-fg-h: var(--green);
   position: relative;
   isolation: isolate;
   display: inline-flex;
@@ -14,9 +20,10 @@
   background: var(--bg);
   color: var(--fg);
   border: 1.5px solid var(--bg);
-  font-weight: 650;
-  font-size: 0.95rem;
-  letter-spacing: -0.01em;
+  font-family: var(--font-display);
+  font-weight: var(--fw-button);
+  font-size: 0.98rem;
+  letter-spacing: 0;
   line-height: 1;
   white-space: nowrap;
   transition: color var(--dur-base) var(--ease-out);
@@ -24,26 +31,35 @@
 
 .lg {
   padding: 1.25rem 1.4rem 1.25rem 1.9rem;
-  font-size: 1.1rem;
+  font-size: 1.12rem;
 }
 
 .paper {
   --bg: var(--paper);
   --fg: var(--black);
   --fill: var(--green);
+  --fill-size: 100% 100%;
   --fill-fg: var(--black);
+  --arrow-bg-h: var(--black);
+  --arrow-fg-h: var(--green);
 }
 .ink {
   --bg: var(--black);
   --fg: var(--paper);
   --fill: var(--green);
+  --fill-size: 100% 100%;
   --fill-fg: var(--black);
+  --arrow-bg-h: var(--black);
+  --arrow-fg-h: var(--green);
 }
 .outline {
   --bg: transparent;
   --fg: currentColor;
-  --fill: currentColor;
+  --fill: var(--green);
+  --fill-size: 100% 100%;
   --fill-fg: var(--black);
+  --arrow-bg-h: var(--black);
+  --arrow-fg-h: var(--green);
   border-color: currentColor;
 }
 
@@ -52,6 +68,8 @@
   inset: -1px;
   z-index: -1;
   background: var(--fill);
+  background-size: var(--fill-size);
+  background-position: 0 50%;
   border-radius: inherit;
   transform: translateY(101%);
   transition: transform var(--dur-base) var(--ease-out);
@@ -120,8 +138,8 @@
 }
 .btn:hover .arrow,
 .btn:focus-visible .arrow {
-  background: var(--fill-fg);
-  color: var(--fill);
+  background: var(--arrow-bg-h);
+  color: var(--arrow-fg-h);
 }
 .btn:hover .arrow span:first-child,
 .btn:focus-visible .arrow span:first-child {

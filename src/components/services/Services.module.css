@@ -23,13 +23,14 @@
 }
 .title {
   font-size: var(--fs-mega);
-  font-weight: 900;
-  font-stretch: 110%;
+  font-weight: 700;
 }
 .title > span:last-child {
   padding-left: 0.5em;
 }
 .intro {
+  font-family: var(--font-display); /* subtítulo: Quicksand medium */
+  font-weight: var(--fw-subtitle);
   max-width: 28ch;
   color: var(--paper-70);
   font-size: var(--fs-lead);
@@ -103,7 +104,7 @@
 }
 .module.on {
   background: var(--accent);
-  color: var(--black);
+  color: var(--accent-fg);
   z-index: 1;
 }
 .hasActive .module:not(.on):not(.linked) {
@@ -119,19 +120,17 @@
 
 .moduleTitle {
   font-family: var(--font-display);
-  font-weight: 850;
-  font-stretch: 100%;
+  font-weight: 700;
   font-size: clamp(1.4rem, 8cqi, 3rem);
   line-height: 0.95;
   letter-spacing: var(--tracking-tight);
   text-transform: uppercase;
   max-width: 12ch;
   transition:
-    font-stretch var(--dur-slow) var(--ease-out),
+    letter-spacing var(--dur-slow) var(--ease-out),
     transform var(--dur-slow) var(--ease-out);
 }
 .on .moduleTitle {
-  font-stretch: 112%;
   transform: translateY(-2px);
 }
 

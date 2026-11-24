@@ -6,9 +6,10 @@ import { pillars } from "@/content/conexo";
 import s from "./Pillars.module.css";
 
 const THEME = [
-  { bg: "#5b5bff", fg: "#f7f5ef", line: "#f7f5ef" },
-  { bg: "#b7ff3c", fg: "#111111", line: "#111111" },
-  { bg: "#ffd84d", fg: "#111111", line: "#111111" },
+  // Celeste, Verde Lima y Baby Blue (Brand Book) con el texto de mejor contraste en cada uno
+  { bg: "#0446f2", fg: "#f5f9f4", line: "#f5f9f4" },
+  { bg: "#c8f502", fg: "#070b0e", line: "#070b0e" },
+  { bg: "#82ccf9", fg: "#070b0e", line: "#070b0e" },
 ];
 
 const C = 250; // centro del sistema

@@ -1,19 +1,20 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo, JetBrains_Mono } from "next/font/google";
+import { Inter, Quicksand } from "next/font/google";
 import { services, site } from "@/content/conexo";
 import "./globals.css";
 
-const archivo = Archivo({
+// Brand Book págs. 10–12: Quicksand (títulos, subtítulos, botones) + Inter (textos y formularios)
+const quicksand = Quicksand({
   subsets: ["latin"],
-  axes: ["wdth"],
-  variable: "--font-archivo",
+  weight: ["500", "600", "700"],
+  variable: "--font-quicksand",
   display: "swap",
 });
 
-const mono = JetBrains_Mono({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-jetbrains",
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#111111",
+  themeColor: "#070b0e",
   colorScheme: "dark light",
 };
 
@@ -68,7 +69,7 @@ const bootScript = `document.documentElement.classList.add('js')`;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="es" className={`${archivo.variable} ${mono.variable}`} suppressHydrationWarning>
+    <html lang="es" className={`${quicksand.variable} ${inter.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: bootScript }} />
         <noscript>

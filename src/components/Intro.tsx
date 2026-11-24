@@ -5,9 +5,9 @@ import { gsap, SplitText, useGSAP, MQ } from "@/lib/gsap";
 import s from "./Intro.module.css";
 
 const EQUATION = [
-  { label: "Web", color: "var(--blue)" },
-  { label: "Automatización", color: "var(--green)" },
-  { label: "Soporte", color: "var(--yellow)" },
+  { label: "Web", color: "var(--blue)", fg: "var(--paper)" },
+  { label: "Automatización", color: "var(--green)", fg: "var(--ink)" },
+  { label: "Soporte", color: "var(--babyblue)", fg: "var(--ink)" },
 ];
 
 export default function Intro() {
@@ -69,7 +69,7 @@ export default function Intro() {
           <div className={s.equation} data-eq>
             <span className={s.wire} data-eq-wire aria-hidden="true" />
             {EQUATION.map((item, i) => (
-              <span key={item.label} className={s.eqItem} data-eq-item style={{ ["--c" as string]: item.color }}>
+              <span key={item.label} className={s.eqItem} data-eq-item style={{ ["--c" as string]: item.color, ["--cfg" as string]: item.fg }}>
                 <span className={s.eqNode} aria-hidden="true" />
                 {item.label}
                 {i < EQUATION.length - 1 && (
