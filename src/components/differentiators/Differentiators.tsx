@@ -87,8 +87,8 @@ export default function Differentiators() {
           // La tarjeta anterior se hunde cuando llega la siguiente
           if (i < cards.length - 1) {
             gsap.to(card.querySelector("[data-inner]"), {
-              scale: 0.9,
-              opacity: 0.35,
+              // sin bajar la opacidad: así no se transparenta el texto de la tarjeta de atrás
+              scale: 0.94,
               borderRadius: 40,
               ease: "none",
               scrollTrigger: { trigger: cards[i + 1], start: "top bottom", end: "top top", scrub: true },
@@ -131,8 +131,8 @@ export default function Differentiators() {
   return (
     <section ref={root} id="diferenciales" className={s.diff} aria-labelledby="diff-title">
       <div className={`container ${s.intro}`}>
-        <h2 id="diff-title" className={`mono ${s.eyebrow}`}>
-          <span>(05)</span> Por qué Conexo
+        <h2 id="diff-title" className="sr-only">
+          Por qué Conexo
         </h2>
         <p className={s.manifesto} data-manifesto>
           {manifesto}
@@ -143,12 +143,6 @@ export default function Differentiators() {
         {differentiators.map((d, i) => (
           <article key={d.n} data-card className={`${s.card} ${s[THEMES[i]]}`} aria-labelledby={`diff-${d.n}`}>
             <div className={s.inner} data-inner>
-              <div className={s.top}>
-                <span className="mono">
-                  {d.n} / 0{differentiators.length}
-                </span>
-                <span className="mono">Por qué Conexo</span>
-              </div>
 
               <h3 id={`diff-${d.n}`} className={`display ${s.title}`}>
                 {d.title.map((t) => (

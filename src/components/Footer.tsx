@@ -2,15 +2,18 @@ import { nav, site } from "@/content/conexo";
 import { LogoLockup } from "./ui/Logo";
 import s from "./Footer.module.css";
 
+/**
+ * Footer completo sobre el degradado Icónico (Brand Book pág. 14), con el
+ * logotipo + tagline blanco como en la aplicación en valla (pág. 23).
+ * Todo va centrado para quedar sobre la zona azul profundo / negra del
+ * degradado y no sobre los brillos verde lima de las esquinas.
+ */
 export default function Footer() {
   const links = [...nav, { label: "Contacto", href: "#contacto" }];
   return (
     <footer className={s.footer}>
-      <div className={`container ${s.grid}`}>
-        <div className={s.brand}>
-          {/* Logotipo + tagline oficial (Brand Book pág. 9) */}
-          <LogoLockup tone="verde" width={250} />
-        </div>
+      <div className={`container ${s.inner}`}>
+        <LogoLockup tone="blanco" width={300} className={s.logo} />
 
         <nav aria-label="Pie de página">
           <ul className={s.links}>
@@ -33,15 +36,11 @@ export default function Footer() {
           </a>
         </address>
 
-        <a href="#top" className={`mono ${s.top}`}>
-          Volver arriba ↑
-        </a>
-      </div>
-
-      <div className={`container ${s.base}`}>
         <div className={s.legal}>
           <span className="mono">© {new Date().getFullYear()} Conexo</span>
-          <span className="mono">Web · Automatización · Soporte</span>
+          <a href="#top" className={`mono ${s.top}`}>
+            Volver arriba ↑
+          </a>
         </div>
       </div>
     </footer>

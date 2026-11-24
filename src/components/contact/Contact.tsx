@@ -5,7 +5,7 @@ import { gsap, useGSAP, MQ } from "@/lib/gsap";
 import { site } from "@/content/conexo";
 import s from "./Contact.module.css";
 
-const WORD = ["¿CONECTA", "MOS?"];
+const WORD = "¿CONECTAMOS?";
 
 export default function Contact() {
   const root = useRef<HTMLElement>(null);
@@ -36,12 +36,6 @@ export default function Contact() {
             scrollTrigger: { trigger: "[data-word]", start: "top 95%", end: "center 55%", scrub: 1 },
           }
         );
-        gsap.from("[data-wire]", {
-          scaleX: 0,
-          transformOrigin: "0 50%",
-          ease: "none",
-          scrollTrigger: { trigger: "[data-word]", start: "center 70%", end: "center 45%", scrub: 1 },
-        });
         gsap.from("[data-fade]", {
           y: 40,
           opacity: 0,
@@ -88,46 +82,42 @@ export default function Contact() {
   return (
     <section ref={root} id="contacto" className={s.contact} aria-labelledby="contact-title">
       <div className="container">
-        <p className={`mono ${s.eyebrow}`}>
-          <span>(08)</span> Hablemos
-        </p>
-
         <h2 id="contact-title" className={`display ${s.word}`} data-word aria-label="¿Conectamos?">
-          {WORD.map((part, row) => (
-            <span key={part} className={s.row} aria-hidden="true">
-              {part.split("").map((c, i) => (
-                <span key={i} data-char className={c === "?" || c === "¿" ? s.q : ""}>
-                  {c}
-                </span>
-              ))}
-              {row === 0 && <span className={s.wire} data-wire />}
-            </span>
-          ))}
+          <span className={s.row} aria-hidden="true">
+            {WORD.split("").map((c, i) => (
+              <span key={i} data-char className={c === "?" || c === "¿" ? s.q : ""}>
+                {c}
+              </span>
+            ))}
+          </span>
         </h2>
 
         <div className={s.grid}>
-          <div className={s.copy}>
-            <p className={s.lead} data-fade>
-              Conectemos tu marca con lo digital.
-            </p>
-            <p className={s.sub} data-fade>
-              Cuéntanos qué necesitas y te respondemos con una propuesta clara, sin enredos.
-            </p>
-            <ul className={s.channels} data-fade>
-              <li>
-                <span className="mono">Email</span>
-                <a href={`mailto:${site.email}`} className="u-link">
-                  {site.email}
-                </a>
-              </li>
-              <li>
-                <span className="mono">Teléfono</span>
-                <a href={site.phoneHref} className="u-link">
-                  {site.phone}
-                </a>
-              </li>
-            </ul>
+          <div className={s.copy} data-fade>
+            <p className={s.lead}>Conectemos tu marca con lo digital.</p>
+            <p className={s.sub}>Cuéntanos qué necesitas y te respondemos con una propuesta clara, sin enredos.</p>
           </div>
+
+          <ul className={s.channels} data-fade>
+            <li>
+              <a href={`mailto:${site.email}`} className={s.channel}>
+                <span className="mono">Email</span>
+                <span className={s.value}>{site.email}</span>
+                <span className={s.arrow} aria-hidden="true">
+                  ↗
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href={site.phoneHref} className={s.channel}>
+                <span className="mono">Teléfono</span>
+                <span className={s.value}>{site.phone}</span>
+                <span className={s.arrow} aria-hidden="true">
+                  ↗
+                </span>
+              </a>
+            </li>
+          </ul>
 
           <div className={s.magnetZone}>
             <a

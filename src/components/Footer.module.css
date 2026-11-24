@@ -1,79 +1,81 @@
+/* Footer completo sobre el degradado Icónico (Brand Book pág. 14) */
 .footer {
   position: relative;
-  padding-top: var(--space-lg);
   background: var(--black);
+  /* fundido desde el negro océano de la sección anterior para que el degradado no se vea cortado */
+  background:
+    linear-gradient(180deg, var(--black) 0%, rgb(7 11 14 / 0.85) 12%, rgb(7 11 14 / 0) 42%),
+    var(--grad-iconico);
   color: var(--paper);
   overflow: hidden;
 }
-/* Línea superior con el degradado Versátil (Brand Book pág. 14) */
-.footer::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto;
-  height: 1px;
-  background: var(--grad-versatil);
-  opacity: 0.6;
+
+.inner {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: clamp(1.75rem, 3.5vw, 2.75rem);
+  min-height: min(88svh, 760px);
+  padding-block: clamp(4rem, 9vw, 7rem) 2rem;
+  text-align: center;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr 1.2fr auto;
-  gap: 2rem;
-  align-items: start;
-}
-
-.brand {
-  display: grid;
-  gap: 0.75rem;
+.logo {
+  width: clamp(180px, 22vw, 300px);
 }
 
 .links {
-  display: grid;
-  gap: 0.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 2rem;
   font-family: var(--font-display);
   font-weight: 600;
+  font-size: 1.05rem;
 }
 
 .contact {
-  display: grid;
-  gap: 0.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 2rem;
   font-style: normal;
   font-family: var(--font-display);
   font-weight: 600;
-  justify-items: start;
-}
-
-.top {
-  color: var(--paper-50);
-  transition: color var(--dur-base);
-}
-.top:hover {
-  color: var(--green);
-}
-
-.base {
-  margin-top: var(--space-lg);
-  border-top: 1px solid var(--paper-15);
+  font-size: 1.05rem;
 }
 
 .legal {
   display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  padding-block: 1.25rem;
-  color: var(--paper-50);
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 2rem;
+  margin-top: clamp(1rem, 3vw, 2.5rem);
+  color: rgb(245 249 244 / 0.75);
 }
 
-@media (max-width: 1023px) {
-  .grid {
-    grid-template-columns: 1fr 1fr;
-  }
+.top {
+  color: inherit;
+  transition: color var(--dur-base);
 }
+.top:hover,
+.top:focus-visible {
+  color: var(--paper);
+}
+
+/* En pantallas angostas se amplía el degradado (cada capa por igual) para que los
+   brillos lima queden en los bordes y el texto centrado caiga sobre el azul/negro. */
 @media (max-width: 767px) {
-  .grid {
-    grid-template-columns: 1fr;
+  .footer {
+    background-size: 190% 100%;
+    background-position: 50% 50%;
   }
-  .legal {
+  .links {
     flex-direction: column;
+    gap: 0.6rem;
+  }
+  .contact {
+    flex-direction: column;
+    gap: 0.4rem;
   }
 }

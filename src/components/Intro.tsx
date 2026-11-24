@@ -34,7 +34,8 @@ export default function Intro() {
           scrollTrigger: { trigger: "[data-eq]", start: "top 85%", toggleActions: "play none none reverse" },
           defaults: { ease: "expo.out", duration: 1 },
         });
-        eq.from("[data-eq-item]", { y: 40, opacity: 0, stagger: 0.08 })
+        // Sólo opacidad: las píldoras tienen transición CSS de transform (hover) y moverlas en Y las dejaba desfasadas
+        eq.from("[data-eq-item]", { opacity: 0, stagger: 0.08, duration: 0.8 })
           .from("[data-eq-wire]", { scaleX: 0, transformOrigin: "0 50%", duration: 1.2, ease: "power3.inOut" }, 0.2)
           .from("[data-eq-result]", { scale: 0.6, opacity: 0, ease: "back.out(1.7)" }, 0.6);
 
@@ -54,9 +55,6 @@ export default function Intro() {
   return (
     <section ref={root} className={s.intro} aria-labelledby="intro-title">
       <div className="container">
-        <p className={`mono ${s.eyebrow}`}>
-          <span>(01)</span> Posicionamiento
-        </p>
 
         <h2 id="intro-title" className={`display ${s.statement}`} data-statement>
           No necesitas más herramientas.{" "}

@@ -8,9 +8,25 @@
   --blanco: #f5f9f4;
   --celeste: #0446f2;
   --baby-blue: #82ccf9;
-  /* Degradados oficiales (stops tomados del PDF del manual) */
-  --grad-iconico: linear-gradient(90deg, #c8f502 0%, #1d1d1b 100%);
-  --grad-versatil: linear-gradient(90deg, #ffffff 0%, #1d1d1b 100%);
+  /* Degradados oficiales — Brand Book pág. 14.
+     En el manual son mallas difuminadas; se recrean con capas radiales/lineales
+     a partir de una grilla de colores muestreada del PDF. */
+  --azul-profundo: #00003f; /* azul del degradado Icónico */
+
+  /* Icónico: "Fusión de Verde Lima y Azul profundo". Brillo lima arriba-izquierda,
+     banda azul profundo al centro, negro, y brillo lima en la esquina inferior derecha. */
+  --grad-iconico:
+    radial-gradient(ellipse 13% 62% at 95% 106%, #e2e400 0%, #d4dd04 24%, #a3b51c 44%, #4f6a3a 66%, rgb(0 0 0 / 0) 100%),
+    radial-gradient(ellipse 9% 60% at 89% 52%, rgb(120 150 150 / 0.38) 0%, rgb(60 85 80 / 0.22) 50%, rgb(0 0 0 / 0) 100%),
+    radial-gradient(ellipse 26% 70% at 0% 112%, rgb(0 0 0 / 0.7) 0%, rgb(0 0 0 / 0) 100%),
+    linear-gradient(112deg, #b4da00 0%, #a0c200 7%, #7f9c06 13%, #56690f 19%, rgb(30 36 20 / 0.6) 24%, rgb(0 0 0 / 0) 29%),
+    linear-gradient(90deg, rgb(0 0 0 / 0) 17%, #08083b 26%, #02013e 35%, var(--azul-profundo) 43%, #000133 51%, #00021c 59%, #000207 66%, rgb(0 0 0 / 0) 72%),
+    #000000;
+
+  /* Versátil: "Negro suave con matices de luz". Ideal para fondos neutros y contenido técnico. */
+  --grad-versatil:
+    radial-gradient(ellipse 22% 55% at 47% -8%, rgb(0 0 0 / 0.5) 0%, rgb(0 0 0 / 0) 100%),
+    linear-gradient(100deg, #2e2e2e 0%, #333333 9%, #252525 15%, #121212 22%, #0c0c0c 29%, #161616 35%, #3a3a3a 43%, #4b4b4b 51%, #525252 60%, #474747 70%, #2e2e2e 80%, #1a1a1a 88%, #0e0e0e 100%);
 
   /* Alias de uso en componentes */
   --black: var(--negro-oceano);

@@ -13,15 +13,6 @@
   gap: 1.5rem 3rem;
   margin-bottom: var(--space-lg);
 }
-.eyebrow {
-  grid-column: 1 / -1;
-  display: flex;
-  gap: 1rem;
-  color: var(--ink-50);
-}
-.eyebrow span {
-  color: var(--ink);
-}
 .title {
   font-size: var(--fs-h2);
   font-weight: 700;
@@ -64,10 +55,10 @@
   position: relative;
   isolation: isolate;
   display: grid;
-  grid-template-columns: 4rem 1fr minmax(12rem, 22rem) 3rem;
+  grid-template-columns: 1fr minmax(12rem, 22rem) 3rem;
   grid-template-areas:
-    "index name category arrow"
-    ". more more .";
+    "name category arrow"
+    "more more .";
   align-items: center;
   column-gap: 1.5rem;
   padding-block: clamp(1rem, 1.8vw, 1.6rem);
@@ -85,10 +76,6 @@
   transition: transform var(--dur-base) var(--ease-out);
 }
 
-.index {
-  grid-area: index;
-  color: var(--ink-50);
-}
 .name {
   grid-area: name;
   font-family: var(--font-display);
@@ -228,12 +215,12 @@
     display: none;
   }
   .link {
-    grid-template-columns: 2.5rem 1fr 2.75rem;
+    grid-template-columns: 1fr 2.75rem;
     grid-template-areas:
-      "thumb thumb thumb"
-      "index name arrow"
-      ". category ."
-      ". more .";
+      "thumb thumb"
+      "name arrow"
+      "category ."
+      "more .";
     row-gap: 0.5rem;
   }
   .thumb {

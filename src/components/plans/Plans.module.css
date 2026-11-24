@@ -14,15 +14,6 @@
   gap: 1.5rem 3rem;
   margin-bottom: var(--space-lg);
 }
-.eyebrow {
-  grid-column: 1 / -1;
-  display: flex;
-  gap: 1rem;
-  color: var(--ink-50);
-}
-.eyebrow span {
-  color: var(--ink);
-}
 .title {
   font-size: var(--fs-h2);
   font-weight: 700;

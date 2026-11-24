@@ -105,9 +105,6 @@ export default function Process() {
     <section ref={root} id="proceso" className={s.process} aria-labelledby="process-title">
       <div className={s.frame}>
         <header className={`container ${s.head}`}>
-          <p className={`mono ${s.eyebrow}`}>
-            <span>(06)</span> Cómo trabajamos
-          </p>
           <h2 id="process-title" className={`display ${s.title}`}>
             Un proceso claro,
             <br />

@@ -16,7 +16,7 @@
 .inner {
   position: relative;
   display: grid;
-  grid-template-rows: auto 1fr auto auto;
+  grid-template-rows: 1fr auto auto;
   min-height: 100svh;
   padding-top: calc(var(--nav-h) + 2rem);
   padding-bottom: 4.5rem;
@@ -28,31 +28,7 @@
   pointer-events: auto;
 }
 
-.top {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  color: var(--paper-70);
-}
 
-.live {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  margin-right: 0.4rem;
-  border-radius: 50%;
-  background: var(--green);
-  box-shadow: 0 0 0 0 rgb(200 245 2 / 0.6);
-  animation: live 2s infinite;
-}
-@keyframes live {
-  70% {
-    box-shadow: 0 0 0 10px rgb(200 245 2 / 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgb(200 245 2 / 0);
-  }
-}
 
 /* ---------- Titular ---------- */
 .title {

@@ -12,21 +12,14 @@
   gap: 1.5rem 3rem;
   margin-bottom: var(--space-lg);
 }
-.eyebrow {
-  grid-column: 1 / -1;
-  display: flex;
-  gap: 1rem;
-  color: var(--paper-50);
-}
-.eyebrow span {
-  color: var(--green);
-}
 .title {
-  font-size: var(--fs-mega);
+  /* más contenido que --fs-mega; el conector y "conecta." siempre en la misma línea */
+  font-size: clamp(3rem, 9.5vw, 10.5rem);
   font-weight: 700;
 }
 .title > span:last-child {
   padding-left: 0.5em;
+  white-space: nowrap;
 }
 .intro {
   font-family: var(--font-display); /* subtítulo: Quicksand medium */
@@ -111,12 +104,6 @@
   color: var(--paper-50);
 }
 
-.moduleTop {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  opacity: 0.7;
-}
 
 .moduleTitle {
   font-family: var(--font-display);

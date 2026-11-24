@@ -17,18 +17,13 @@
   display: flex;
   align-items: center;
   gap: 1rem 2rem;
-  padding-block: 1.5rem;
-  padding-top: calc(var(--nav-h) + 1.5rem);
-}
-.head p span {
-  opacity: 0.6;
-}
-.head h2 {
-  margin-left: auto;
+  /* sin rótulos: en mobile la cabecera sólo deja un respiro antes del primer pilar */
+  padding-block: 1rem 0;
 }
 
 .progress {
   display: none;
+  margin-left: auto;
 }
 
 .stage {
@@ -228,8 +223,3 @@
   }
 }
 
-@media (max-width: 767px) {
-  .head h2 {
-    display: none;
-  }
-}

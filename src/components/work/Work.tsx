@@ -64,9 +64,6 @@ export default function Work() {
     <section ref={root} id="proyectos" className={s.work} aria-labelledby="work-title" onPointerMove={onMove}>
       <div className="container">
         <header className={s.head}>
-          <p className={`mono ${s.eyebrow}`}>
-            <span>(04)</span> Trabajo
-          </p>
           <h2 id="work-title" className={`display ${s.title}`} data-title>
             <span className="line-mask">
               <span>Proyectos que</span>
@@ -101,7 +98,6 @@ export default function Work() {
                 onFocus={() => setCurrent(i)}
                 onBlur={() => setCurrent(null)}
               >
-                <span className={`mono ${s.index}`}>{String(i + 1).padStart(2, "0")}</span>
                 <span className={s.name}>{p.name}</span>
                 <span className={`mono ${s.category}`}>{p.category}</span>
                 <span className={s.more}>

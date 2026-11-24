@@ -89,11 +89,8 @@ export default function Pillars() {
     <section ref={root} id="pilares" className={s.pillars} aria-labelledby="pillars-title">
       <div className={s.frame}>
         <header className={`container ${s.head}`}>
-          <p className="mono">
-            <span>(03)</span> Tres pilares
-          </p>
-          <h2 id="pillars-title" className="mono">
-            Un solo equipo detrás de tu marca
+          <h2 id="pillars-title" className="sr-only">
+            Tres pilares. Un solo equipo detrás de tu marca
           </h2>
           <span className={s.progress} aria-hidden="true">
             <span data-progress />

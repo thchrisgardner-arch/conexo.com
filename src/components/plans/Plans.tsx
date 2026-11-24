@@ -54,9 +54,6 @@ export default function Plans() {
     <section ref={root} id="planes" className={s.plans} aria-labelledby="plans-title">
       <div className="container">
         <header className={s.head}>
-          <p className={`mono ${s.eyebrow}`}>
-            <span>(07)</span> Planes
-          </p>
           <h2 id="plans-title" className={`display ${s.title}`} data-title>
             <span className="line-mask">
               <span>Un plan para</span>
@@ -72,7 +69,7 @@ export default function Plans() {
         </header>
 
         <div className={s.grid} data-plans>
-          {plans.map((p, i) => (
+          {plans.map((p) => (
             <article
               key={p.id}
               data-plan
@@ -84,7 +81,6 @@ export default function Plans() {
               <span className={s.glow} aria-hidden="true" />
               <div className={s.cardTop}>
                 <span className={`mono ${p.featured ? s.badge : ""}`}>{p.eyebrow}</span>
-                <span className="mono">0{i + 1}</span>
               </div>
               <h3 id={`plan-${p.id}`} className={s.name}>
                 {p.name}

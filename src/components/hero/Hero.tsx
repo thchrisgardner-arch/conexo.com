@@ -83,11 +83,6 @@ export default function Hero() {
       </div>
 
       <div className={`container ${s.inner}`} data-inner>
-        <div className={s.top} data-fade>
-          <p className="mono">
-            <span className={s.live} aria-hidden="true" /> Desarrollo web · Automatización · Soporte
-          </p>
-        </div>
 
         <h1 id="hero-title" className={`display ${s.title}`}>
           <span className={`line-mask ${s.l1}`} data-line>

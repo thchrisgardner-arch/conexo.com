@@ -7,15 +7,6 @@
 .intro {
   padding-block: var(--space-xl);
 }
-.eyebrow {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: var(--space-md);
-  color: var(--paper-50);
-}
-.eyebrow span {
-  color: var(--green);
-}
 .manifesto {
   max-width: 24ch;
   font-family: var(--font-display);
@@ -31,6 +22,11 @@
   top: 0;
   height: 100vh;
   height: 100svh;
+}
+/* pausa: cada tarjeta queda fija un tramo de scroll antes de que llegue la siguiente,
+   para leer el título y el párrafo completos */
+.card:not(:last-child) {
+  margin-bottom: 70svh;
 }
 
 .inner {
@@ -50,7 +46,7 @@
   --cvis: var(--blue);
 }
 .ink {
-  --cbg: var(--black);
+  --cbg: var(--grad-versatil);
   --cfg: var(--paper);
   --cvis: var(--green);
 }
@@ -65,11 +61,6 @@
   --cvis: var(--green);
 }
 
-.top {
-  display: flex;
-  justify-content: space-between;
-  opacity: 0.7;
-}
 
 .title {
   margin-block: auto;
@@ -162,10 +153,12 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .card {
+  .card,
+  .card:not(:last-child) {
     position: relative;
     height: auto;
     min-height: 80svh;
+    margin-bottom: 0;
   }
   .visual [data-straight] {
     stroke-dashoffset: 0;

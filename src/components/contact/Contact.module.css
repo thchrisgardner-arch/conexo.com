@@ -6,21 +6,13 @@
   overflow: hidden;
 }
 
-.eyebrow {
-  display: flex;
-  gap: 1rem;
-  color: var(--paper-50);
-}
-.eyebrow span {
-  color: var(--green);
-}
-
 .word {
   display: grid;
   margin-block: var(--space-lg);
-  font-size: clamp(4rem, 14vw, 16rem);
+  /* una sola línea: "¿CONECTAMOS?" ocupa el ancho del contenedor */
+  font-size: clamp(1.9rem, 9.6vw, 12rem);
   font-weight: 700;
-  line-height: 0.82;
+  line-height: 0.9;
   color: var(--paper);
 }
 .row {
@@ -29,83 +21,97 @@
   align-items: center;
   white-space: nowrap;
 }
-.row:last-child {
-  justify-content: flex-end;
-}
 .row span {
   display: inline-block;
 }
 .q {
   color: var(--green);
 }
-.wire {
-  flex: 1;
-  height: 0.06em;
-  min-width: 0.5em;
-  margin-left: 0.15em;
-  background: var(--green);
-  border-radius: 99px;
-}
 
+/* Retícula: mensaje · canales · botón, alineados bajo una línea divisoria */
 .grid {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr) auto;
   align-items: center;
   gap: var(--space-lg);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--paper-15);
 }
 
 .lead {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: var(--fs-h3);
-  line-height: 1.02;
+  font-size: clamp(1.6rem, 2.4vw, 2.5rem);
+  line-height: 1.08;
   letter-spacing: var(--tracking-snug);
   margin-bottom: 1rem;
+  max-width: 16ch;
 }
 .sub {
   font-family: var(--font-display); /* subtítulo: Quicksand medium */
   font-weight: var(--fw-subtitle);
-  max-width: 40ch;
+  max-width: 34ch;
   color: var(--paper-70);
-  font-size: var(--fs-lead);
-  line-height: 1.35;
+  font-size: 1.1rem;
+  line-height: 1.45;
 }
 
+/* Canales como filas: etiqueta · valor · flecha */
 .channels {
   display: grid;
-  gap: 1.25rem;
-  margin-top: var(--space-md);
+  border-bottom: 1px solid var(--paper-15);
 }
 .channels li {
-  display: grid;
-  gap: 0.35rem;
+  border-top: 1px solid var(--paper-15);
 }
-.channels .mono {
+.channel {
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1rem;
+  padding-block: 1.4rem;
+  transition: color var(--dur-base) var(--ease-out);
+}
+.channel .mono {
   color: var(--paper-50);
 }
-.channels a {
-  justify-self: start;
+.value {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(1.5rem, 3.2vw, 3rem);
+  font-size: clamp(1.15rem, 1.7vw, 1.65rem);
   letter-spacing: var(--tracking-snug);
-  line-height: 1.1;
-  background-size: 0% 3px;
+  overflow-wrap: anywhere;
+}
+.arrow {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1.5px solid var(--paper-15);
+  border-radius: 50%;
   transition:
-    background-size var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-spring),
+    background-color var(--dur-base),
+    border-color var(--dur-base),
     color var(--dur-base);
 }
-.channels a:hover,
-.channels a:focus-visible {
+.channel:hover,
+.channel:focus-visible {
   color: var(--green);
-  background-size: 100% 3px;
+}
+.channel:hover .arrow,
+.channel:focus-visible .arrow {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--black);
+  transform: rotate(45deg);
 }
 
 /* ---------- Botón magnético ---------- */
 .magnetZone {
   display: grid;
   place-items: center;
-  padding: 3rem;
+  padding: 1.5rem;
 }
 .magnet {
   position: relative;
@@ -154,9 +160,10 @@
 
 @media (max-width: 1023px) {
   .grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
   .magnetZone {
+    grid-column: 1 / -1;
     justify-items: start;
     padding: 1rem 0 0 14px;
   }
@@ -164,6 +171,17 @@
 
 @media (max-width: 767px) {
   .word {
-    font-size: clamp(2.4rem, 11vw, 6rem);
+    font-size: clamp(1.9rem, 9.6vw, 6rem);
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+  .channel {
+    grid-template-columns: minmax(0, 1fr) auto;
+    row-gap: 0.25rem;
+  }
+  .channel .mono {
+    grid-column: 1 / -1;
   }
 }

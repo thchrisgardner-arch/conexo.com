@@ -1,11 +1,10 @@
 .btn {
-  /* Por defecto (verde lima): el hover se queda en la paleta de marca con el
-     degradado Icónico (Verde Lima → #1d1d1b), estirado para que el tramo visible
-     vaya de lima a oliva y el texto negro conserve contraste (≥ 4.5:1). */
+  /* Por defecto (verde lima): el hover se queda dentro de la marca con un tono
+     más claro de Verde Lima y el texto negro océano (contraste > 12:1). */
   --bg: var(--green);
   --fg: var(--black);
-  --fill: var(--grad-iconico);
-  --fill-size: 230% 100%;
+  --fill: color-mix(in srgb, var(--verde-lima) 62%, var(--blanco));
+  --fill-size: 100% 100%;
   --fill-fg: var(--black);
   --arrow-bg-h: var(--black);
   --arrow-fg-h: var(--green);

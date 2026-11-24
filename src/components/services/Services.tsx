@@ -103,9 +103,6 @@ export default function Services() {
     <section ref={root} id="servicios" className={s.services} aria-labelledby="services-title">
       <div className="container">
         <header className={s.head}>
-          <p className={`mono ${s.eyebrow}`}>
-            <span>(02)</span> Lo que hacemos
-          </p>
           <h2 id="services-title" className={`display ${s.title}`} data-title>
             <span className="line-mask">
               <span>Todo</span>
@@ -150,7 +147,7 @@ export default function Services() {
             })}
           </svg>
 
-          {services.map((sv, i) => {
+          {services.map((sv) => {
             const on = active === sv.id;
             return (
               <article
@@ -169,12 +166,6 @@ export default function Services() {
                 onBlur={() => setActive(null)}
                 onClick={() => setActive(on ? null : sv.id)}
               >
-                <div className={s.moduleTop}>
-                  <span className="mono">S/{String(i + 1).padStart(2, "0")}</span>
-                  <span className={`mono ${s.links}`}>
-                    {sv.links.length} conexiones
-                  </span>
-                </div>
                 <h3 id={`sv-${sv.id}`} className={s.moduleTitle}>
                   {sv.title}
                 </h3>

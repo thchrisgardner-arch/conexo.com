@@ -104,10 +104,9 @@ export default function Nav() {
         inert={!open}
       >
         <nav aria-label="Menú mobile" className={s.menuNav}>
-          {[...nav, { label: "Contacto", href: "#contacto" }].map((item, i) => (
+          {[...nav, { label: "Contacto", href: "#contacto" }].map((item) => (
             <span className="line-mask" key={item.href}>
               <a href={item.href} data-menu-item onClick={() => setOpen(false)} className={s.menuLink}>
-                <span className="mono">0{i + 1}</span>
                 {item.label}
               </a>
             </span>
